@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+input#clipboard {
+  position: fixed;
+  top: -50px;
+}
+
+#tabpanel {
+  display: none;
+}
+
+ul.nav-tabs {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.tab-content {
+  position: relative;
+  overflow: hidden;
+}
+
+#colors::after,
+#images::after {
+  content: '';
+  background: #ffffff url("/img/checkerboard.png") repeat left top;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  z-index: -1;
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+}
+
+.color-square-container {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  float: left;
+  display: inline-block;
+  transition-duration: 100ms;
+}
+
+.color-square {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+}
+
+.alert.copied {
+  font-size: 1.5rem;
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  padding: 5px;
+  display: none;
+}
+
+.color-name {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: transparent;
+  color: white;
+}
+
+#tabpanel {
+  width: 400px;
+}
+
+#colors {
+  overflow: auto;
+}
+
+#fonts {
+  background: #FFF;
+  margin: 5px;
+  font-size: 1.8rem;
+}
+
+#fonts li {
+  list-style: none;
+}
+
+#fonts a {
+  color: black;
+}
+
+#images img {
+  width: 100%;
+}
+
+#images-container {
+}
+
+.image-square-container {
+  display: inline-block;
+  width: 100px;
+  vertical-align: middle;
+  position: relative;
+}
+
+
+.image-square-container a {
+}
