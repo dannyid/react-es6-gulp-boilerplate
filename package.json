@@ -1,7 +1,7 @@
 {
-  "name": "design-assistant-react",
+  "name": "react-es6-gulp-boilerplate",
   "version": "0.0.1",
-  "description": "Get all colors, fonts, and images from a page with the click of a button.",
+  "description": "React/ES6 boilerplate project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
