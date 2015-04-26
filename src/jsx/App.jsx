@@ -1,6 +1,15 @@
-/*jshint esnext: true */
-
 import React from 'react';
-import HelloWorld from './components/hello-world';
+import Header from './components/header';
 
-React.render(<HelloWorld name="Danny"/>, document.body);
+class App extends React.Component {
+  render() {
+    return (
+      <Header name="Danny"/>
+    );
+  }
+}
+
+React.render(
+  <App />,
+  document.body
+);

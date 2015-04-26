@@ -21,11 +21,19 @@ var paths = {
   }
 };
 
-gulp.task('clean', function(done) {
-  del(['./dist/**/*.*'], done);
+gulp.task('clean:css', function(done) {
+  del(['./dist/css/**/*.css'], done);
 });
 
-gulp.task('css', function() {
+gulp.task('clean:js', function(done) {
+  del(['./dist/js/**/*.js'], done);
+});
+
+gulp.task('clean:html', function(done) {
+  del(['./dist/*.html'], done);
+});
+
+gulp.task('css', ['clean:css'], function() {
   return gulp.src(paths.src.css)
     .pipe(stylus())
     .pipe(minifyCSS())
@@ -33,7 +41,7 @@ gulp.task('css', function() {
     .pipe(gulp.dest(paths.dest.css));
 });
 
-gulp.task('jsx', function () {
+gulp.task('jsx', ['clean:js'], function () {
   browserify({
     entries: paths.src.appJs,
     extensions: ['.jsx'],
@@ -45,7 +53,7 @@ gulp.task('jsx', function () {
   .pipe(gulp.dest(paths.dest.js));
 });
 
-gulp.task('html', function(){
+gulp.task('html', ['clean:html'], function(){
   gulp.src(paths.src.html)
   .pipe(gulp.dest(paths.dest.dist));
 });
@@ -58,4 +66,4 @@ gulp.task('watch', function() {
 });
 
 // The default task (called when we run `gulp` from cli)
-gulp.task('default', ['watch', 'clean', 'css', 'jsx', 'html']);
+gulp.task('default', ['watch', 'css', 'jsx', 'html']);
