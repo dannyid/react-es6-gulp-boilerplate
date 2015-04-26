@@ -10,7 +10,7 @@ var concat = require('gulp-concat');
 var paths = {
   src: {
     css: ['./src/css/libs/*.css', './src/css/**/*.styl', 'src/css/**/*.css'],
-    jsx: ['./src/jsx/*.jsx'], //Src JS files on which to watch
+    jsx: ['./src/jsx/**/*.jsx'], //Src JS files on which to watch
     appJs: ['./src/jsx/App.jsx'], //Main JS file, browserify finds the deps
     html: ['./src/*.html']
   },
