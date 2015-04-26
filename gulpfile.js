@@ -12,22 +12,20 @@ var paths = {
     css: ['./src/css/libs/*.css', './src/css/**/*.styl', 'src/css/**/*.css'],
     jsx: ['./src/jsx/*.jsx'], //Src JS files on which to watch
     appJs: ['./src/jsx/App.jsx'], //Main JS file, browserify finds the deps
+    html: ['./src/*.html']
   },
   dest: {
+    dist: './dist',
     css: './dist/css',
-    js: './dist/js',
+    js: './dist/js'
   }
 };
- 
-gulp.task('clean:css', function(done) {
-  del([paths.dest.css], done);
+
+gulp.task('clean', function(done) {
+  del(['./dist/**/*.*'], done);
 });
 
-gulp.task('clean:js', function(done) {
-  del([paths.dest.js], done);
-});
-
-gulp.task('css', ['clean:css'], function() {
+gulp.task('css', function() {
   return gulp.src(paths.src.css)
     .pipe(stylus())
     .pipe(minifyCSS())
@@ -35,7 +33,7 @@ gulp.task('css', ['clean:css'], function() {
     .pipe(gulp.dest(paths.dest.css));
 });
 
-gulp.task('jsx', ['clean:js'], function () {
+gulp.task('jsx', function () {
   browserify({
     entries: paths.src.appJs,
     extensions: ['.jsx'],
@@ -47,11 +45,17 @@ gulp.task('jsx', ['clean:js'], function () {
   .pipe(gulp.dest(paths.dest.js));
 });
 
+gulp.task('html', function(){
+  gulp.src(paths.src.html)
+  .pipe(gulp.dest(paths.dest.dist));
+});
+
 // Rerun tasks whenever a file changes.
 gulp.task('watch', function() {
   gulp.watch(paths.src.css, ['css']);
   gulp.watch(paths.src.jsx, ['jsx']);
+  gulp.watch(paths.src.html, ['html']);
 });
 
 // The default task (called when we run `gulp` from cli)
-gulp.task('default', ['watch', 'css', 'jsx']);
+gulp.task('default', ['watch', 'clean', 'css', 'jsx', 'html']);
