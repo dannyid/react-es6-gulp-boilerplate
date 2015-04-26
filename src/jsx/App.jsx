@@ -1,17 +1,6 @@
 /*jshint esnext: true */
 
 import React from 'react';
+import HelloWorld from './components/hello-world';
 
-(function () {
-
-  'use strict';
-
-  class App extends React.component {
-    render() {
-      return <h1>Hello {this.props.name}</h1>;
-    }
-  }
-
-  React.render(<App name="Danny"/>, document.body);
-
-})();
+React.render(<HelloWorld />, document.body);

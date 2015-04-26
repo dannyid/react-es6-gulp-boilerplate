@@ -37,14 +37,14 @@ gulp.task('css', ['clean:css'], function() {
 
 gulp.task('jsx', ['clean:js'], function () {
   browserify({
-    entries: './src/jsx/App.jsx',
+    entries: paths.src.appJs,
     extensions: ['.jsx'],
     debug: true
   })
   .transform(babelify)
   .bundle()
-  .pipe(source('App.js'))
-  .pipe(gulp.dest('dist/js'));
+  .pipe(source('app.js'))
+  .pipe(gulp.dest(paths.dest.js));
 });
 
 // Rerun tasks whenever a file changes.
